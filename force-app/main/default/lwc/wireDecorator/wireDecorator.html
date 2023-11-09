@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="search contact -wire a property or function">
+        <lightning-input label="Enter the search text" type="search" value={searchkey} onchange={handlechange}></lightning-input>
+<!---->
+        <template if:true={contact.data}>
+            <template for:each={contact.data} for:item="con">
+                <p key={con.id}>Name :{con.Name}</p>
+            </template>
+            <lightning-datatable key-field="Id" data={contact.data} columns=col></lightning-datatable>
+        </template>
+        <template if:true={contact.error}>
+            sorry we cannot display your record due to {contact.error}. please try later.
+        </template>       
+
+    </lightning-card>
+    
+</template>
